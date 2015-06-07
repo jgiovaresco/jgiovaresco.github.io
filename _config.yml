@@ -1,14 +1,22 @@
 # Site settings
-title: Your awesome title
-email: your-email@domain.com
-description: > # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://yourdomain.com" # the base hostname & protocol for your site
-twitter_username: jekyllrb
-github_username:  jekyll
-
-# Build settings
+title: My Blog
 markdown: kramdown
+highlighter: pygments
+
+description: A blog software development
+url: http://jgiovaresco.github.io
+
+author :
+  name : Julien Giovaresco
+  email : contactme@giovaresco.fr
+  github : jgiovaresco
+  twitter : jgiovaresco
+
+# Config for Jekyll rake boilerplate
+#post:
+#  template: _templates/post.txt
+#  extension: md
+#page:
+#  template: _templates/page.txt
+#  extension: md
+#editor: atom
