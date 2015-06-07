@@ -1,20 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html class="no-js" lang="fr">
 
-  {% include head.html %}
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="{{ site.author.name }}"/>
+	<meta name="owner" content="{{ site.author.name }}"/>
 
-  <body>
+	{% if page.excerpt %}
+	<meta name="description" content="{{page.excerpt | strip_html | truncate: 180 }}"/>
+	{% else %}
+	<meta name="description" content="{{site.description}}"/>
+	{% endif %}
 
-    {% include header.html %}
+	<meta name="keywords" content="Java, Spring, JEE, Javascript, Angular, Craftsmanship"/>
+	<meta name="news_keywords" content="Java, Spring, JEE, Javascript, Angular, Craftsmanship"/>
+	<meta name="content-language" content="fr"/>
+	<meta name="robots" content="follow,index,all"/>
 
-    <div class="page-content">
-      <div class="wrapper">
-        {{ content }}
-      </div>
-    </div>
+	<meta name="viewport" content="width=device-width initial-scale=1"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    {% include footer.html %}
+	<title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
 
-  </body>
+	<link rel="stylesheet" href="{{ '/css/bootstrap.min.css' | prepend: site.baseurl }}">
+	<link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+</head>
+
+
+<body>
+
+	<header>
+		<nav class="navbar navbar-default">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/">Julien Giovaresco</a>
+				</div>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="/"><i class="glyphicon glyphicon-home"></i> Accueil</a></li>
+					<li><a href="/"><i class="glyphicon glyphicon-user"></i> CV</a></li>
+					<li><a href="/"><i class="glyphicon glyphicon-pencil"></i> Blog</a></li>
+					<li><a href="/"><i class="glyphicon glyphicon-briefcase"></i> Projets</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+
+
+	{{ content }}
+
+</body>
 
 </html>
