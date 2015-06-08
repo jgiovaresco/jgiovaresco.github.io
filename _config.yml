@@ -1,6 +1,6 @@
 # Site settings
 title: My Blog
-markdown: kramdown
+markdown: redcarpet
 highlighter: pygments
 
 description: A blog software development
