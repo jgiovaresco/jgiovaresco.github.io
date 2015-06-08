@@ -5,10 +5,24 @@ layout: default
 
   <header class="post-header">
     <h1 class="post-title">{{ page.title }}</h1>
-    <p class="post-meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
+
+    <div class="row">
+      <div class="col-sm-4">
+        <i class="glyphicon glyphicon-calendar"></i> <span>{{ page.date | date_to_string }}</span>
+      </div>
+      <div class="col-sm-4">
+        <!-- Share links -->
+      </div>
+      <div class="col-sm-4">
+        {% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}
+      </div>
+    </div>
+
   </header>
 
-  <article class="post-content">
+  <hr />
+
+  <article>
     {{ content }}
   </article>
 
