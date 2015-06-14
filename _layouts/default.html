@@ -23,6 +23,7 @@
 	<title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
 
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/css/github.css">
 	<link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
 </head>
@@ -48,9 +49,33 @@
 	</header>
 
 	<div class="container">
-	{{ content }}
+		{{ content }}
 	</div>
 
+	<footer>
+		<hr />
+		<div class="text-center">
+			<div class="row">
+				<a title="Subscribe to the RSS feed" href="{{ '/feed.xml' | prepend: site.baseurl }}">
+					<i class="fa fa-rss fa-2x"></i>
+				</a>
+			</div>
+
+			<div class="row">
+				<a href="http://validator.w3.org/check?uri=referer">
+					<img src="{{ '/images/html5.png' | prepend: site.baseurl }}" alt="Valid HTML!"/>
+				</a>
+				<a rel="license" href="http://creativecommons.org/licenses/by-nd/3.0/"
+				   title="Cette création est mise à disposition sous un contrat Creative Commons.">
+					<img src="http://i.creativecommons.org/l/by-nd/3.0/80x15.png" alt="Creative Commons License"/>
+				</a>
+			</div>
+
+			<div class="row">
+				<a href="http://bootswatch.com/flatly/">CSS Bootswatch Flatly</a>
+			</div>
+		</div>
+	</footer>
 </body>
 
 </html>
