@@ -55,18 +55,20 @@ Grâce à Spring, on peut facilement écrire un test permettant de valider l'exi
 		mockMvc.perform(get("/"))
 //				.andDo(print())
 				.andExpect(status().isOk())
-				.andExpect(content().string(containsString("Welcome to <span>My PR</span>")));
+				.andExpect(view().name("index"))
+				.andExpect(forwardedUrl("templates/index.html"));
 	}
 ```
 
 Nous avons 2 choix possibles pour la déclarer la configuration de ce test. 
  
   1. Utiliser la configuration automatique de Spring Boot en annotant la classe de test avec ``@ContextConfiguration(classes = MyPrApplication.class)``
-  2. Configurer manuellement Thymeleaf
+  2. Configurer manuellement le view resolver
   
 Le 1er choix est plus rapide à mettre en place, l'inconvénient est que le test sera plus long car Spring Boot va configurer toute l'application (cache des templates, ...)
+Nous utiliserons cette méthode pour faire des tests d'intégration.
 
-Du coup, nous allons plutôt configurer au minimum Thymeleaf pour notre besoin, grâce à l'inner-class suivante
+Du coup, nous allons plutôt configurer le ViewResolver manuellement, grâce à l'inner-class suivante
 
 ```java
 	@Configuration
@@ -76,15 +78,9 @@ Du coup, nous allons plutôt configurer au minimum Thymeleaf pour notre besoin, 
 		@Bean
 		public ViewResolver viewResolver()
 		{
-			ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
-			templateResolver.setTemplateMode("XHTML");
-			templateResolver.setPrefix("templates/");
-			templateResolver.setSuffix(".html");
-
-			SpringTemplateEngine engine = new SpringTemplateEngine();
-			engine.setTemplateResolver(templateResolver);
-			ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
-			viewResolver.setTemplateEngine(engine);
+			InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+			viewResolver.setPrefix("templates/");
+			viewResolver.setSuffix(".html");
 			return viewResolver;
 		}
 	}
@@ -157,7 +153,7 @@ Cependant, le test écrit dans cette étape ne fonctionne pas avec Infinitest. O
 fr.mypr.controller.IndexControllerTest:67 - NestedServletException(Request processing failed; nested exception is org.thymeleaf.exceptions.TemplateInputException: Error resolving template "index", template might not exist or might not be accessible by any of the configured Template Resolvers)
 ```
 
-Or ce test fonctionne s'il est lancé directement avec Intellij ou avec Gradle. J'ai donc configurer Infinitest pour ne pas exécuter les tests 
-des contrôleurs grâce au fichier ``infinitest.filters``
+Or ce test fonctionne s'il est lancé directement avec Intellij ou avec Gradle.
+Pour éviter ce problème, le test n'utilise pas Thymeleaf mais un ViewResolver simple.
 
  
