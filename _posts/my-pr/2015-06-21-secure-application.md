@@ -6,8 +6,8 @@ categories: [my-pr]
 tags: [java, spring, spring security]
 ---
 
-Dans cet article, nous allons sécuriser l'application. 
-Pour accéder à l'application, les utilisateurs devront renseigner un login/password. Pour cette étape nous utiliserons un compte utilisateur créé en dur, l'inscription des utilisateurs se fera dans l'article suivant.
+Dans cet article, je vais sécuriser l'application. 
+Pour accéder à l'application, les utilisateurs devront renseigner un login/password. Pour cette étape j'utiliserai un compte utilisateur créé en dur, l'inscription des utilisateurs se fera dans l'article suivant.
 
 Le done de cette étape est une application permettant à un utilisateur de se connecter avec un login/password.
 
@@ -31,14 +31,16 @@ Les dépendances à ajouter sont
  	* librairie d'assertions utilisant une API Fluent
  * ``testCompile('org.springframework.security:spring-security-test')`` 
  	* fournit des classes utilitaires pour les tests
- * ``testCompile('com.ninja-squad:DbSetup:1.5.0')``
+ * ``testCompile('org.dbunit:dbunit:2.5.1')``
   	* permet d'alimenter les tables de la base de données.
-
+ * ``testCompile('com.github.springtestdbunit:spring-test-dbunit:1.2.1')``
+  	* permet de lier Spring et DBUnit
+  	
 ## Création des tests d'acceptation.
 
 Cette fois les tests d'acceptation seront des tests d'intégration. L'application sera initialisée complètement et on utilisera MockMvc pour simuler les requêtes.
 
-Pour initialiser l'application, Spring Boot nous facilite la tâche. En utilisant les annotations suivantes, l'application est initialisée et le profile ``integrationTest`` est activé 
+Pour initialiser l'application, Spring Boot me facilite la tâche. En utilisant les annotations suivantes, l'application est initialisée et le profile ``integrationTest`` est activé 
 
 ```java
 @ActiveProfiles({"integrationTest"})
@@ -64,6 +66,38 @@ Le principe des tests est le même pour tous
   * on vérifie 
     * le status de la réponse
     * l'url en cas de redirection ou une partie du contenu de la page 
+
+
+### Alimentation de la base de données
+
+Pour tester le formulaire de login, il est nécessaire d'avoir un utilisateur définit dans la base de données. Pour alimenter celle-ci, je vais utiliser [DBUnit](http://dbunit.sourceforge.net/). 
+Le projet [spring-test-dbunit](http://springtestdbunit.github.io/spring-test-dbunit/) facilite l'intégration de DBUnit avec Spring.
+
+J'aurais pu utiliser [DBSetup](http://dbsetup.ninja-squad.com/) qui propose de définir ses jeux de données à l'aide d'une API fluente. 
+Cependant dans l'étape suivante je vais devoir contrôler le contenu de la base de données après exécution des tests. Or DBSetup ne permet que l'alimentation d'une base de données. 
+
+#### Déclaration DBUnit
+
+Pour utiliser DBUnit dans un test il faut ajouter l'annotation suivante 
+
+```java
+@TestExecutionListeners({DependencyInjectionTestExecutionListener.class,
+                         TransactionalTestExecutionListener.class,
+                         DbUnitTestExecutionListener.class})
+```
+
+Il est nécessaire d'ajouter les listeners ``DependencyInjectionTestExecutionListener.class`` et ``TransactionalTestExecutionListener.class`` car dès qu'un ``TestExecutionListeners`` est déclaré, les listeners définis par défauts sont oubliés.
+Sans cette déclaration, il ne serait plus possible d'injecter des beans dans la classe de test.
+
+#### Déclaration d'un jeu de données
+
+La déclaration d'un jeu de données se fait grâce à l'annotation ``@DatabaseSetup``
+
+```java
+@DatabaseSetup("users.xml")
+```
+
+Le fichier passé dans l'annotation est récupéré de la même manière qu'un fichier de configuration Spring déclaré avec l'annotation ``@ContextConfiguration``.
 
 ### Fonctionnement du formulaire de connexion
 
