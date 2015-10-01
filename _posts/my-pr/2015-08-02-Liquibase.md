@@ -4,6 +4,10 @@ title:  "My-PR : Utilisation de Liquibase"
 date:   2015-08-02 18:23:00
 categories: [my-pr]
 tags: [java, spring, liquibase]
+redirect_from: 
+  - 2015/08/02/Liquibase/
+  - Liquibase
+permalink: utilisation-de-liquibase/
 ---
 
 

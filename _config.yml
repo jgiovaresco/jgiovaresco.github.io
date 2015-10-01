@@ -1,22 +1,26 @@
-# Site settings
-title: My Blog
-markdown: redcarpet
-highlighter: pygments
+# Dependencies
+markdown: 		redcarpet
+highlighter: 	pygments
+redcarpet:
+  extensions: 	["tables"]
 
-description: A blog software development
-url: http://jgiovaresco.github.io
+# Permalinks
+permalink:		pretty
+
+# Site settings
+title: 			My Blog
+url: 			http://jgiovaresco.github.io
+description: 	A blog software development
 
 author :
-  name : Julien Giovaresco
-  email : contactme@giovaresco.fr
-  github : jgiovaresco
-  twitter : jgiovaresco
+  name : 		Julien Giovaresco
+  email : 		contactme@giovaresco.fr
+  github : 		jgiovaresco
+  twitter : 	jgiovaresco
 
-# Config for Jekyll rake boilerplate
-#post:
-#  template: _templates/post.txt
-#  extension: md
-#page:
-#  template: _templates/page.txt
-#  extension: md
-#editor: atom
+paginate:		1
+
+# Allow URL Redirects: 
+#  * https://help.github.com/articles/redirects-on-github-pages
+gems:
+  - jekyll-redirect-from

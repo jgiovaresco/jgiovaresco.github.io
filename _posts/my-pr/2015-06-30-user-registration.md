@@ -4,6 +4,8 @@ title:  "My-PR : Inscription des utilisateurs"
 date:   2015-06-30 15:38:00
 categories: [my-pr]
 tags: [java, spring]
+redirect_from: 2015/06/30/user-registration/
+permalink: user-registration/
 ---
 
 Dans cet article, j'ajoute la fonctionnalité d'inscription des utilisateurs.

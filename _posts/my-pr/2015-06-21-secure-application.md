@@ -4,6 +4,8 @@ title:  "My-PR : Sécurisation de l'application"
 date:   2015-06-21 22:13:00
 categories: [my-pr]
 tags: [java, spring, spring security]
+redirect_from: 2015/06/22/secure-application/
+permalink: secure-application/
 ---
 
 Dans cet article, je vais sécuriser l'application. 

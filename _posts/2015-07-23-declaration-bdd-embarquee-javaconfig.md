@@ -4,6 +4,8 @@ title:  "Déclaration d'un base de donnée embarquée avec Spring et JavaConfig"
 date:   2015-07-23 19:08:00
 categories: [test]
 tags: [java, spring]
+redirect_from: 2015/07/23/declaration-bdd-embarquee-javaconfig/
+permalink: declaration-bdd-embarquee-javaconfig
 ---
 
 Pour les tests unitaires des classes qui interagissent avec une base de donnée, on peut utiliser une base de données en mémoire type [H2]() ou [HSQLDB]().

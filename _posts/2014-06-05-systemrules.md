@@ -1,9 +1,13 @@
 ---
 layout: post
-title:  "Mock les appels à System.exit, System.out, ..."
+title:  "Mocker les appels à System.exit, System.out, ..."
 date:   2014-06-05 18:19:00
 categories: [test]
 tags: [java, unit tests]
+redirect_from: 
+  - 2014/06/05/systemrules/
+  - systemrules
+permalink: mocker-les-appels-java.lang.System/
 ---
 
 Il est difficile de tester du code faisant appel à ``java.lang.System``.

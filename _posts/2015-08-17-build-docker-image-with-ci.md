@@ -4,6 +4,8 @@ title:  "Construire une image Docker dans une intégration continue"
 date:   2015-08-17 18:45:00
 categories: [ci]
 tags: [java, docker, shippable]
+redirect_from: 2015/08/17/build-docker-image-with-ci/
+permalink: construire-image-docker-dans-une-ic
 ---
 
 Je voulais voir s'il était possible de construire une image Docker à la suite d'un build réussi en utilisant des outils disponibles sur le net. 

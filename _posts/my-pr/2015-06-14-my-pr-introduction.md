@@ -4,6 +4,8 @@ title:  "My-PR : Une application pour crossfiteur"
 date:   2015-06-14 11:13:00
 categories: [my-pr]
 tags: [java, spring]
+redirect_from: 2015/06/14/my-pr-introduction/
+permalink: my-pr-introduction/
 ---
 
 Je commence une série d'articles consacrée au développement d'une application avec [Spring Boot](http://projects.spring.io/spring-boot/). 

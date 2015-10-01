@@ -4,6 +4,8 @@ title:  "Utilisation de PowerMock pour mocker méthodes static, final ou des con
 date:   2014-06-05 18:07:00
 categories: [test]
 tags: [java, mockito, powermock, unit tests]
+redirect_from: 2014/06/05/utilisation-powermock/
+permalink: utilisation-powermock/
 ---
 
 Les frameworks de Mocks comme EasyMock ou Mockito sont incapables de mocker les appels à des méthodes static ou final ou les appels aux constructeurs.
