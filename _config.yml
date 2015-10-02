@@ -8,9 +8,9 @@ redcarpet:
 permalink:		pretty
 
 # Site settings
-title: 			My Blog
+title: 			Julien Giovaresco
 url: 			http://jgiovaresco.github.io
-description: 	A blog software development
+description: 	A software development blog
 
 author :
   name : 		Julien Giovaresco
