@@ -1,0 +1,32 @@
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="{{ site.author.name }}"/>
+	<meta name="owner" content="{{ site.author.name }}"/>
+
+	{% if page.excerpt %}
+	<meta name="description" content="{{page.excerpt | strip_html | truncate: 180 }}"/>
+	{% else %}
+	<meta name="description" content="{{site.description}}"/>
+	{% endif %}
+
+	<meta name="keywords" content="Java, Spring, JEE, Javascript, Angular, Craftsmanship, Docker"/>
+	<meta name="news_keywords" content="Java, Spring, JEE, Javascript, Angular, Craftsmanship, Docker"/>
+	<meta name="content-language" content="fr"/>
+	<meta name="robots" content="follow,index,all"/>
+
+	<meta name="viewport" content="width=device-width initial-scale=1"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<title>
+	{% if page.title %}
+		{{ page.title }} &middot; {{ site.title }}
+	{% else %}
+		{{ site.title }} &middot; {{ site.description }}
+	{% endif %}
+	</title>
+
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/github.css">
+	<link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+</head>
