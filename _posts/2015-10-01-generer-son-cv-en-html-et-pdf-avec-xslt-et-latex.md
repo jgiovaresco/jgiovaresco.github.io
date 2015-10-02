@@ -2,6 +2,7 @@
 layout: post
 title:  "Générer son CV en HTML et en PDF avec XSLT et LaTeX"
 date:   2015-10-01 21:26:00
+comments: true
 categories: []
 tags: [docker, latex]
 redirect_from: 2015/10/01/generer-son-cv-en-html-et-pdf-avec-xslt-et-late/x

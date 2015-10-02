@@ -2,6 +2,7 @@
 layout: post
 title:  "Accès aux conteneurs Docker par leur nom"
 date:   2015-09-27 14:10:00
+comments: true
 categories: []
 tags: [docker]
 redirect_from: 2015/09/27/access-docker-container-with-their-name/

@@ -2,6 +2,7 @@
 layout: post
 title:  "Construire une image Docker dans une intégration continue"
 date:   2015-08-17 18:45:00
+comments: true
 categories: [ci]
 tags: [java, docker, shippable]
 redirect_from: 2015/08/17/build-docker-image-with-ci/
