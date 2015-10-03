@@ -1,10 +1,20 @@
 <script>
+	if (location.search) {
+		param = location.search.split("param=")[1];
+		// Verify the url is like http://example.com?param=true and then set exclude dimension
+		if (param) {
+			document.cookie = 'exclude_admin=true; expires=Fri, 01 Jan 2110 00:0:00 UTC; path=/'
+		}
+	}
+
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
+ 	
 	ga('create', 'UA-64329016-1', 'auto');
+	if (document.cookie.indexOf("exclude_admin") >= 0) {
+		ga('set', 'dimension1', 'true');
+	}	
 	ga('send', 'pageview');
-
 </script>
